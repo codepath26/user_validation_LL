@@ -1,21 +1,17 @@
-import { useState } from 'react'
+import { useRef} from 'react'
 import './AddUser.css'
 
 const AddUser = (props)=>{
-  const [username , setUsername]= useState('')
-  const [age , setAge]= useState('')
- 
-  const usernameHandler = (e)=>{
-    setUsername(e.target.value);
-    console.log(e.target.value);
-  }
-  const ageHandler = (e)=>{
-    setAge(e.target.value);
-    console.log(e.target.value);
-  }
+  const enteredUsername = useRef();
+  const enteredAge = useRef();
+  const enteredCollegeName = useRef();
+
   const formSubmitHandler =(e)=>{
     e.preventDefault();
-    if(username === '' || age === ''){
+    const username = enteredUsername.current.value;
+    const age = enteredAge.current.value;
+    const collegename = enteredCollegeName.current.value
+    if(username === '' || age === '' || collegename === ''){
       props.openDialog('Please Enter The Correct Details');
 
     }
@@ -23,9 +19,7 @@ const AddUser = (props)=>{
       props.openDialog('Please Enter the age Greater then 0');
      
     }else{
-   props.saveDetaile(username , age);
-   setUsername('');
-   setAge('');
+   props.saveDetaile(username , age ,collegename);
   }
 }
 return(
@@ -33,11 +27,15 @@ return(
     <form onSubmit={formSubmitHandler}>
       <div className="inputField">
         <label htmlFor="username">Username</label>
-        <input value={username} onChange={usernameHandler} type="text" id='username' />
+        <input ref={enteredUsername}  type="text" id='username' />
       </div>
       <div className="inputField">
         <label htmlFor="age">Age(Years)</label>
-        <input value={age} onChange={ageHandler} type="number" id='age' />
+        <input  ref={enteredAge}  type="number" id='age' />
+      </div>
+      <div className="inputField">
+        <label htmlFor="collegeName">College Name</label>
+        <input  ref={enteredCollegeName}  type="text" id='collegeName' />
       </div>
       <div className="buttons">
       <button type='submit'>Add User</button>
