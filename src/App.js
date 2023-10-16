@@ -19,10 +19,11 @@ function App() {
   setDiaStyle(false);
 };
 
-  const getDetails = (name, newAge) => {
+  const getDetails = (name, newAge , collegename) => {
     const newUser = {
       username : name,
       age : newAge,
+      collegename :collegename,
       id : Math.random()
     }
     setUsersData([...usersData , newUser])

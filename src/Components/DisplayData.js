@@ -10,7 +10,7 @@ const DisplayData = ({usersdata}) => {
            usersdata.map((userdata) => {
             return (
           <li key={userdata.id.toString()}>
-            {userdata.username} ({userdata.age} years old)
+            {userdata.username} ({userdata.age} years old) And College Name : {userdata.collegename}
           </li>
           )
           })
