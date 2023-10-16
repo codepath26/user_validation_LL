@@ -1,0 +1,14 @@
+.displayData{
+  width: 40%;
+  margin: 20px auto;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.displayData li {
+  list-style: none;
+  border: 1px solid #ccc;
+  padding: 8px;
+  font-size: 1.2rem;
+}
